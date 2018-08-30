@@ -22,7 +22,7 @@ public class CheckTest {
     @Test
     public void whenDataMonoEvenNumberElementsTrue() {
         Check check = new Check();
-        boolean[] input = new boolean[] {true, true, true,true};
+        boolean[] input = new boolean[] {true, true, true, true};
         boolean result = check.mono(input);
         assertThat(result, is(true));
     }
