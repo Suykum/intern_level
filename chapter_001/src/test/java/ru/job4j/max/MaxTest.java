@@ -13,7 +13,7 @@ public class MaxTest {
     @Test
     public void whenThreeParameters() {
         Max maxim = new Max();
-        int result = maxim.max(1, 2,5);
+        int result = maxim.max(1, 2, 5);
         assertThat(result, is(5));
     }
 }
