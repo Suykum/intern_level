@@ -8,6 +8,7 @@ public class Check {
         for (int i = 1; i < data.length; i++) {
             if (data[i] != temp) {
                 result = false;
+                break;
             }
         }
         return result;
