@@ -21,7 +21,7 @@ public class MatrixCheckTest {
         boolean[][] input = new boolean[][] {
                 {true, true, false},
                 {false, false, true},
-                {true, false, true}
+                {false, false, true}
         };
         boolean result = check.mono(input);
         assertThat(result, is(false));
@@ -37,6 +37,30 @@ public class MatrixCheckTest {
                 {true, true, true, false}
         };
         boolean result = check.mono(input);
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenDataMonoByTrue2on2() {
+        MatrixCheck check = new MatrixCheck();
+        boolean[][] input = new boolean[][] {
+                {true, false},
+                {false, true}
+        };
+        boolean result = check.mono(input);
         assertThat(result, is(true));
     }
+
+    @Test
+    public void whenDataMonoByFalse2on2() {
+        MatrixCheck check = new MatrixCheck();
+        boolean[][] input = new boolean[][] {
+                {true, true},
+                {false, true}
+        };
+        boolean result = check.mono(input);
+        assertThat(result, is(false));
+    }
+
+
 }
