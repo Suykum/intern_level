@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 import java.util.*;
+import java.util.Arrays;
 /**
  * @version $Id$
  * @since 0.1
@@ -41,27 +42,34 @@ public class Tracker {
      * @param id of element
      * @param item
      */
-    public void replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
+        boolean result = false;
         for (int i = 0; i < items.length; i++) {
             if (items[i].getId().equals(id)) {
                 items[i] = item;
+                items[i].setId(id);
+                result = true;
                 break;
             }
         }
+        return result;
     }
 
     /**
      * deleting element from items array.
      * @param id
      */
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean result = false;
         for (int i = 0; i < items.length; i++) {
             if (items[i].getId().equals(id)) {
                 int numElts = items.length - (i + 1);
                 System.arraycopy(items, i + 1, items, i, numElts);
+                result = true;
                 break;
             }
         }
+        return result;
     }
 
     /**
@@ -69,11 +77,8 @@ public class Tracker {
      * @return
      */
     public Item[] getAll() {
-        Item[] result = new Item[position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = items[index];
-        }
-        return result;
+        return Arrays.copyOf(items, position);
+
     }
 
     /**
@@ -84,13 +89,19 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] result = new Item[position];
         int index = 0;
+        int count = 0;
         for (Item item : items) {
             if(item != null && item.getName().equals(key)) {
                 result[index] = item;
                 index++;
             }
         }
-        return result;
+        for (Item item : result) {
+            if (item != null) {
+                count++;
+            }
+        }
+        return Arrays.copyOf(result, count);
     }
 
     /**

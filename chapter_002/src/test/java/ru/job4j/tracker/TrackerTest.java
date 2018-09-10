@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 public class TrackerTest {
@@ -58,7 +60,7 @@ public class TrackerTest {
     public void whenFindByName() {
         Tracker tracker = new Tracker();
         Item first = new Item("First", "first description", 32L);
-        Item second = new Item("Second", "second description", 33L);
+        Item second = new Item("Third", "second description", 33L);
         Item third = new Item("Third", "third description", 34L);
         Item third1 = new Item("Third", "third1 description", 344L);
         tracker.add(first);
@@ -67,7 +69,21 @@ public class TrackerTest {
         tracker.add(third1);
         Item[] result;
         result = tracker.findByName("Third");
-        assertThat(result[0].getName(), is("Third"));
-        assertThat(result[1].getName(), is("Third"));
+        Item[] expected = {second, third, third1};
+        assertThat(result, is(expected));
+    }
+    @Test
+    public void whenGetAll() {
+        Tracker tracker = new Tracker();
+        Item first = new Item("First", "first description", 32L);
+        Item second = new Item("Second", "second description", 33L);
+        Item third = new Item("Third", "third description", 34L);
+        tracker.add(first);
+        tracker.add(second);
+        tracker.add(third);
+        Item[] result;
+        result = tracker.getAll();
+        Item[] expected = {first, second, third};
+        assertThat(result, is(expected));
     }
 }
