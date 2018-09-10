@@ -34,7 +34,7 @@ public class Tracker {
      */
     private String generateId() {
         //Реализовать метод генерации.
-        return String.valueOf(System.currentTimeMillis()+RN.nextInt());
+        return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
 
     /**
@@ -89,19 +89,13 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] result = new Item[position];
         int index = 0;
-        int count = 0;
         for (Item item : items) {
             if(item != null && item.getName().equals(key)) {
                 result[index] = item;
                 index++;
             }
         }
-        for (Item item : result) {
-            if (item != null) {
-                count++;
-            }
-        }
-        return Arrays.copyOf(result, count);
+        return result;
     }
 
     /**
