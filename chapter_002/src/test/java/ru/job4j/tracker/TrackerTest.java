@@ -69,7 +69,7 @@ public class TrackerTest {
         tracker.add(third1);
         Item[] result;
         result = tracker.findByName("Third");
-        Item[] expected = {second, third, third1, null};
+        Item[] expected = {second, third, third1};
         assertThat(result, is(expected));
     }
     @Test

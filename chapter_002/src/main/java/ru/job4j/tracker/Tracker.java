@@ -89,13 +89,12 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] result = new Item[position];
         int index = 0;
-        for (Item item : items) {
-            if(item != null && item.getName().equals(key)) {
-                result[index] = item;
-                index++;
+        for (int i = 0; i < position; i++) {
+            if(items[i] != null && items[i].getName().equals(key)) {
+                result[index++] = items[i];
             }
         }
-        return result;
+        return Arrays.copyOf(result, index);
     }
 
     /**
