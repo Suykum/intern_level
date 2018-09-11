@@ -52,9 +52,10 @@ public class TrackerTest {
         tracker.add(first);
         tracker.add(second);
         tracker.add(third);
-        System.out.println(tracker.getAll()[1].getName());
+        Item[] expected = {first, third};
         tracker.delete(second.getId());
-        assertThat(tracker.getAll()[1].getName(), is("Third"));
+        Item[] result = tracker.getAll();
+        assertThat(result, is(expected));
     }
     @Test
     public void whenFindByName() {

@@ -77,7 +77,13 @@ public class Tracker {
      * @return
      */
     public Item[] getAll() {
-        return Arrays.copyOf(items, position);
+        int index = 0;
+        for (Item i : items) {
+            if (i != null) {
+                index++;
+            }
+        }
+        return Arrays.copyOf(items, index);
 
     }
 

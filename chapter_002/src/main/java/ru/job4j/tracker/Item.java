@@ -7,10 +7,14 @@ public class Item {
     private long create;
     private String[] comments;
 
-    public Item(String name, String desc, Long create) {
+    public Item(String name, String desc) {
         this.name = name;
         this.desc = desc;
-        this.create = create ;
+    }
+    public Item(String name, String desc, long create) {
+        this.name = name;
+        this.desc = desc;
+        this.create = create;
     }
 
 
