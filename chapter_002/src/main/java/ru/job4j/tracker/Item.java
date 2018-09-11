@@ -57,4 +57,7 @@ public class Item {
     public void setComments(String[] comments) {
         this.comments = comments;
     }
+    public String toString() {
+        return ("ID = " + this.getId() + ", name = " + this.getName() + ", description = " + this.getDesc());
+    }
 }

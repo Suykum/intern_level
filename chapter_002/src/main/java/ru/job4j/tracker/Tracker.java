@@ -61,10 +61,11 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i < position; i++) {
             if (items[i].getId().equals(id)) {
                 int numElts = items.length - (i + 1);
                 System.arraycopy(items, i + 1, items, i, numElts);
+                position--;
                 result = true;
                 break;
             }
@@ -77,13 +78,7 @@ public class Tracker {
      * @return
      */
     public Item[] getAll() {
-        int index = 0;
-        for (Item i : items) {
-            if (i != null) {
-                index++;
-            }
-        }
-        return Arrays.copyOf(items, index);
+        return Arrays.copyOf(items, position);
 
     }
 

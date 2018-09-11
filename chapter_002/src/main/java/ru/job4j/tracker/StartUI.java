@@ -84,7 +84,7 @@ public class StartUI {
         System.out.println("------------ All Items --------------");
         Item[] allItems = this.tracker.getAll();
         for (Item i : allItems) {
-            System.out.println("Item id = " + i.getId() + ", name = " + i.getName() + ", description = " + i.getDesc());
+            System.out.println(i.toString());
         }
     }
 
@@ -99,6 +99,7 @@ public class StartUI {
         Item item = new Item(name, desc);
         this.tracker.replace(id, item);
         System.out.println("---------------" + id + " id item is edited--------------");
+
     }
 
     /**
@@ -107,8 +108,11 @@ public class StartUI {
     public void deleting() {
         System.out.println("------------ Deleting item --------------");
         String id = this.input.ask("Enter ID of item: ");
-        this.tracker.delete(id);
-        System.out.println("----------------" + id + " id item is deleted --------------");
+        if (this.tracker.delete(id)) {
+            System.out.println("----------------" + id + " id item is deleted --------------");
+        } else {
+            System.out.println("Item doesn't found");
+        }
     }
 
     /**
@@ -119,7 +123,7 @@ public class StartUI {
         String id = this.input.ask("Enter ID of the item: ");
         System.out.println("------------ Result of searching: --------------");
         Item resultOfSearch = this.tracker.findById(id);
-        System.out.println("Item id = " + resultOfSearch.getId() + ", name = " + resultOfSearch.getName() + ", description = " + resultOfSearch.getDesc());
+        System.out.println(resultOfSearch.toString());
     }
 
     /**
@@ -131,19 +135,19 @@ public class StartUI {
         System.out.println("------------ Result of searching: --------------");
         Item[] resultOfSearch = this.tracker.findByName(key);
         for (Item i : resultOfSearch) {
-            System.out.println("Item id = " + i.getId() + ", name = " + i.getName() + ", description = " + i.getDesc());
+            System.out.println(i.toString());
         }
     }
 
     private void showMenu() {
         System.out.println("Menu."
-                + "\n0. Add new Item"
-                + "\n1. Show all items"
-                + "\n2. Edit item"
-                + "\n3. Delete item"
-                + "\n4. Find item by Id"
-                + "\n5. Find items by name"
-                + "\n6. Exit Program");
+                + System.lineSeparator() + "0. Add new Item"
+                + System.lineSeparator() + "1. Show all items"
+                + System.lineSeparator() + "2. Edit item"
+                + System.lineSeparator() + "3. Delete item"
+                + System.lineSeparator() + "4. Find item by Id"
+                + System.lineSeparator() + "5. Find items by name"
+                + System.lineSeparator() + "6. Exit Program");
     }
 
     /**
