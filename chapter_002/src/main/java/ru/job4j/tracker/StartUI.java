@@ -81,10 +81,14 @@ public class StartUI {
      * Method to see all items.
      */
     public void seeAllItems() {
-        System.out.println("------------ All Items --------------");
         Item[] allItems = this.tracker.getAll();
-        for (Item i : allItems) {
-            System.out.println(i.toString());
+        if (allItems.length != 0) {
+            System.out.println("------------ All Items --------------");
+            for (Item i : allItems) {
+                System.out.println(i.toString());
+            }
+        } else {
+            System.out.println("No any Item");
         }
     }
 
@@ -94,11 +98,16 @@ public class StartUI {
     public void edit() {
         System.out.println("------------ Edit Item--------------");
         String id = this.input.ask("Enter ID of the item: ");
+        Item resultOfSearch = this.tracker.findById(id);
+        if (resultOfSearch != null) {
         String name = this.input.ask("Enter the name of the item :");
         String desc = this.input.ask("Enter the description of the item :");
         Item item = new Item(name, desc);
         this.tracker.replace(id, item);
         System.out.println("---------------" + id + " id item is edited--------------");
+        } else {
+            System.out.println("Item not found");
+        }
 
     }
 
@@ -111,7 +120,7 @@ public class StartUI {
         if (this.tracker.delete(id)) {
             System.out.println("----------------" + id + " id item is deleted --------------");
         } else {
-            System.out.println("Item doesn't found");
+            System.out.println("Item not found");
         }
     }
 
@@ -121,9 +130,13 @@ public class StartUI {
     public void searchById() {
         System.out.println("------------ Searching by ID --------------");
         String id = this.input.ask("Enter ID of the item: ");
-        System.out.println("------------ Result of searching: --------------");
         Item resultOfSearch = this.tracker.findById(id);
-        System.out.println(resultOfSearch.toString());
+        if (resultOfSearch != null) {
+            System.out.println("------------ Result of searching: --------------");
+            System.out.println(resultOfSearch.toString());
+        } else {
+            System.out.println("Item not found");
+        }
     }
 
     /**
@@ -132,28 +145,36 @@ public class StartUI {
     public void searchByName() {
         System.out.println("------------ Searching by name --------------");
         String key = this.input.ask("Enter the name of item: ");
-        System.out.println("------------ Result of searching: --------------");
         Item[] resultOfSearch = this.tracker.findByName(key);
-        for (Item i : resultOfSearch) {
-            System.out.println(i.toString());
+        if (resultOfSearch.length != 0) {
+            System.out.println("------------ Result of searching: --------------");
+            for (Item i : resultOfSearch) {
+                System.out.println(i.toString());
+            }
+        } else {
+            System.out.println("Item not found");
         }
     }
 
     private void showMenu() {
-        System.out.println("Menu."
-                + System.lineSeparator() + "0. Add new Item"
-                + System.lineSeparator() + "1. Show all items"
-                + System.lineSeparator() + "2. Edit item"
-                + System.lineSeparator() + "3. Delete item"
-                + System.lineSeparator() + "4. Find item by Id"
-                + System.lineSeparator() + "5. Find items by name"
-                + System.lineSeparator() + "6. Exit Program");
+        String ls = System.lineSeparator();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Menu.").append(ls);
+        sb.append("0. Add new Item").append(ls);
+        sb.append("1. Show all items").append(ls);
+        sb.append("2. Edit item").append(ls);
+        sb.append("3. Delete item").append(ls);
+        sb.append("4. Find item by Id").append(ls);
+        sb.append("5. Find items by name").append(ls);
+        sb.append("6. Exit Program").append(ls);
+        System.out.println(sb.toString());
     }
 
-    /**
-     * Запускт программы.
-     * @param args
-     */
+
+        /**
+         * Запускт программы.
+         * @param args
+         */
     public static void main(String[] args) {
         new StartUI(new ConsoleInput(), new Tracker()).init();
     }
