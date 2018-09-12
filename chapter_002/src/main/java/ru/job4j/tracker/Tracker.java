@@ -91,7 +91,7 @@ public class Tracker {
         Item[] result = new Item[position];
         int index = 0;
         for (int i = 0; i < position; i++) {
-            if(items[i] != null && items[i].getName().equals(key)) {
+            if (items[i] != null && items[i].getName().equals(key)) {
                 result[index++] = items[i];
             }
         }
