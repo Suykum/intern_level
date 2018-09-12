@@ -13,12 +13,15 @@ public class StartUITest {
     @Test
     public void whenGettingAllItems() {
         Tracker tracker = new Tracker();
-        Item item1 = tracker.add(new Item("test1", "desc1"));
-        Item item2 = tracker.add(new Item("test2", "desc2"));
-        Item item3 = tracker.add(new Item("test3", "desc3"));
+        Item[] items = {(new Item("test1", "desc1")),
+                        (new Item("test2", "desc2")),
+                        (new Item("test3", "desc3"))};
+        tracker.add(items[0]);
+        tracker.add(items[1]);
+        tracker.add(items[2]);
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.getAll()[2].getName(), is("test3"));
+        assertThat(tracker.getAll(), is(items));
     }
 
     @Test
@@ -38,11 +41,14 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
-        Item item1 = tracker.add(new Item("test1", "desc1"));
-        Item item2 = tracker.add(new Item("test2", "desc2"));
-        Input input = new StubInput(new String[]{"3", item1.getId(), "6"});
+        Item[] items = {(new Item("test1", "desc1")),
+                        (new Item("test2", "desc2"))};
+        tracker.add(items[0]);
+        tracker.add(items[1]);
+        Item item3 = tracker.add(new Item("test3", "desc3"));
+        Input input = new StubInput(new String[]{"3", item3.getId(), "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.getAll()[0].getName(), is("test2"));
+        assertThat(tracker.getAll(), is(items));
     }
 
     @Test
@@ -57,11 +63,13 @@ public class StartUITest {
     @Test
     public void whenSearchingByName() {
         Tracker tracker = new Tracker();
-        Item item1 = tracker.add(new Item("test1", "desc1"));
-        Item item2 = tracker.add(new Item("test2", "desc2"));
-        Item item3 = tracker.add(new Item("test2", "desc3"));
-        Input input = new StubInput(new String[]{"5", item2.getName(), "6"});
+        Item[] items = {(new Item("test2", "desc2")),
+                        (new Item("test2", "desc3"))};
+        tracker.add(items[0]);
+        tracker.add(items[1]);
+        tracker.add(new Item("test4", "desc4"));
+        Input input = new StubInput(new String[]{"5",items[1].getName(), "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findByName(item3.getName())[0].getName(), is("test2"));
+        assertThat(tracker.findByName("test2"), is(items));
     }
 }
