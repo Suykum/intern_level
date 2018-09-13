@@ -58,4 +58,26 @@ public class PatternTest {
         // возвращаем обратно стандартный вывод в консоль.
         System.setOut(stdout);
     }
+
+    @Test
+    public void whenDrawTriangleViaPaint() {
+        PrintStream stdout = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        new Paint().draw(new Triangle());
+        assertThat(
+                new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append("   *   ").append("\n")
+                                .append("  * *  ").append("\n")
+                                .append(" *   * ").append("\n")
+                                .append("*******").append("\n")
+                                .append(System.lineSeparator())
+                                .toString()
+                )
+        );
+        System.setOut(stdout);
+    }
 }
+
