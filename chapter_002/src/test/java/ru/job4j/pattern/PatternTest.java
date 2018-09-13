@@ -6,6 +6,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class PatternTest {
+    String ls = System.lineSeparator();
     @Test
     public void whenDrawSquare() {
         Square square = new Square();
@@ -13,10 +14,10 @@ public class PatternTest {
                 square.draw(),
                 is(
                         new StringBuilder()
-                                .append("****").append("\n")
-                                .append("*  *").append("\n")
-                                .append("*  *").append("\n")
-                                .append("****").append("\n")
+                                .append("****").append(ls)
+                                .append("*  *").append(ls)
+                                .append("*  *").append(ls)
+                                .append("****").append(ls)
                                 .toString()
                 )
         );
@@ -25,10 +26,10 @@ public class PatternTest {
     public void whenDrawTriangle() {
         Triangle triangle = new Triangle();
         assertThat(triangle.draw(),is(new StringBuilder()
-                                        .append("   *   ").append("\n")
-                                        .append("  * *  ").append("\n")
-                                        .append(" *   * ").append("\n")
-                                        .append("*******").append("\n")
+                                        .append("   *   ").append(ls)
+                                        .append("  * *  ").append(ls)
+                                        .append(" *   * ").append(ls)
+                                        .append("*******").append(ls)
                                         .toString()));
     }
 
@@ -47,10 +48,10 @@ public class PatternTest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("****").append("\n")
-                                .append("*  *").append("\n")
-                                .append("*  *").append("\n")
-                                .append("****").append("\n")
+                                .append("****").append(ls)
+                                .append("*  *").append(ls)
+                                .append("*  *").append(ls)
+                                .append("****").append(ls)
                                 .append(System.lineSeparator())
                                 .toString()
                 )
@@ -69,10 +70,10 @@ public class PatternTest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("   *   ").append("\n")
-                                .append("  * *  ").append("\n")
-                                .append(" *   * ").append("\n")
-                                .append("*******").append("\n")
+                                .append("   *   ").append(ls)
+                                .append("  * *  ").append(ls)
+                                .append(" *   * ").append(ls)
+                                .append("*******").append(ls)
                                 .append(System.lineSeparator())
                                 .toString()
                 )
