@@ -31,6 +31,7 @@ public class StartUI {
      * Хранилище заявок.
      */
     private final Tracker tracker;
+    private boolean working = true;
 
     /**
      * Конструтор инициализирующий поля.
@@ -73,15 +74,18 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         ArrayList<Integer> range = new ArrayList<>();
-        menu.fillActions();
+        menu.fillActions(this);
         for (int i = 0; i < menu.getActionsLentgh(); i++) {
             range.add(i);
         }
         do {
             menu.show();
-            int key = Integer.valueOf(input.ask("Select:"));
+            int key = Integer.valueOf(this.input.ask("Select:"));
             menu.select(key);
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+        } while (this.working);
+    }
+    public void stop() {
+        this.working = false;
     }
 
     /**

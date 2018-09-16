@@ -9,14 +9,14 @@ public class MenuTracker {
         this.input = input;
         this.tracker = tracker;
     }
-    public void fillActions() {
+    public void fillActions(StartUI ui) {
         this.actions.add(new AddItem(0, "0. Add new Item"));
         this.actions.add(new ShowItems(1, "1. Show all items"));
         this.actions.add(new EditItem(2, "2. Edit item"));
         this.actions.add(new DeleteItem(3, "3. Delete item"));
         this.actions.add(new FindItemById(4, "4. Find item by Id"));
         this.actions.add(new FindItemsByName(5, "5. Find items by name"));
-        //this.actions.add(new ExitProgram(6, "Exit Program"));
+        this.actions.add(new ExitProgram(ui, 6, "6. Exit Program"));
     }
 
     /**
@@ -223,6 +223,31 @@ public class MenuTracker {
                 System.out.println("Item not found");
             }
         }
+        @Override
+        public String info() {
+            return info;
+        }
+    }
+    static class ExitProgram implements UserAction {
+        private final StartUI input;
+        int key;
+        String info;
+        public ExitProgram(StartUI input, int key, String info) {
+            this.input = input;
+            this.key = key;
+            this.info = info;
+        }
+        @Override
+        public int key() {
+            return key;
+        }
+
+        @Override
+        public void execute(Input input, Tracker tracker) {
+            this.input.stop();
+
+        }
+
         @Override
         public String info() {
             return info;
