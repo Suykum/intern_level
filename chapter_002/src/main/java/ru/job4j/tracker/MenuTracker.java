@@ -10,13 +10,13 @@ public class MenuTracker {
         this.tracker = tracker;
     }
     public void fillActions(StartUI ui) {
-        this.actions.add(new AddItem(0, "0. Add new Item"));
-        this.actions.add(new ShowItems(1, "1. Show all items"));
-        this.actions.add(new EditItem(2, "2. Edit item"));
-        this.actions.add(new DeleteItem(3, "3. Delete item"));
-        this.actions.add(new FindItemById(4, "4. Find item by Id"));
-        this.actions.add(new FindItemsByName(5, "5. Find items by name"));
-        this.actions.add(new ExitProgram(ui, 6, "6. Exit Program"));
+        this.actions.add(new AddItem(0, "Add new Item"));
+        this.actions.add(new ShowItems(1, "Show all items"));
+        this.actions.add(new EditItem(2, "Edit item"));
+        this.actions.add(new DeleteItem(3, "Delete item"));
+        this.actions.add(new FindItemById(4, "Find item by Id"));
+        this.actions.add(new FindItemsByName(5, "Find items by name"));
+        this.actions.add(new ExitProgram(ui, 6, "Exit Program"));
     }
 
     /**
@@ -73,7 +73,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return info;
+            return String.format("%d. %s",key, info);
         }
     }
     static class ShowItems implements UserAction {
@@ -103,7 +103,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return info;
+            return String.format("%d. %s",key, info);
         }
     }
     static class EditItem implements UserAction {
@@ -136,7 +136,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return info;
+            return String.format("%d. %s",key, info);
         }
     }
     static class DeleteItem implements UserAction {
@@ -164,7 +164,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return info;
+            return String.format("%d. %s",key, info);
         }
     }
     static class FindItemById implements UserAction {
@@ -194,7 +194,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return info;
+            return String.format("%d. %s",key, info);
         }
     }
     static class FindItemsByName implements UserAction {
@@ -225,7 +225,7 @@ public class MenuTracker {
         }
         @Override
         public String info() {
-            return info;
+            return String.format("%d. %s",key, info);
         }
     }
     static class ExitProgram implements UserAction {
@@ -250,7 +250,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return info;
+            return String.format("%d. %s",key, info);
         }
     }
 
