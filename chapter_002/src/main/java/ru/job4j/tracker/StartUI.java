@@ -1,4 +1,7 @@
 package ru.job4j.tracker;
+
+import java.util.ArrayList;
+
 /**
  * @version $Id$
  * @since 0.1
@@ -30,7 +33,8 @@ public class StartUI {
 
     /**
      * Конструтор инициализирующий поля.
-     * @param input ввод данных.
+     *
+     * @param input   ввод данных.
      * @param tracker хранилище заявок.
      */
     public StartUI(Input input, Tracker tracker) {
@@ -41,7 +45,7 @@ public class StartUI {
     /**
      * Основой цикл программы.
      */
-    public void init() {
+    /*public void init() {
         boolean exit = false;
         while (!exit) {
             this.showMenu();
@@ -63,6 +67,19 @@ public class StartUI {
                 exit = true;
             }
         }
+
+    }*/
+    public void init() {
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        ArrayList<Integer> range = new ArrayList<>();
+        MenuTracker.fillActions();
+        for (int i = 0; i < menu.getActionsLentgh(); i++) {
+            range.add(i);
+        }
+        do {
+            MenuTracker.show();
+            MenuTracker.select(this.input.ask("select:", range));
+        } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
 
     /**
@@ -100,11 +117,11 @@ public class StartUI {
         String id = this.input.ask("Enter ID of the item: ");
         Item resultOfSearch = this.tracker.findById(id);
         if (resultOfSearch != null) {
-        String name = this.input.ask("Enter the name of the item :");
-        String desc = this.input.ask("Enter the description of the item :");
-        Item item = new Item(name, desc);
-        this.tracker.replace(id, item);
-        System.out.println("---------------" + id + " id item is edited--------------");
+            String name = this.input.ask("Enter the name of the item :");
+            String desc = this.input.ask("Enter the description of the item :");
+            Item item = new Item(name, desc);
+            this.tracker.replace(id, item);
+            System.out.println("---------------" + id + " id item is edited--------------");
         } else {
             System.out.println("Item not found");
         }
@@ -171,12 +188,27 @@ public class StartUI {
     }
 
 
+
+
         /**
          * Запускт программы.
          * @param args
          */
     public static void main(String[] args) {
+
         new StartUI(new ConsoleInput(), new Tracker()).init();
+        /*public void init() {
+            MenuTracker menu = new MenuTracker(this.input, this.tracker);
+            ArrayList<Integer> range = new ArrayList<>();
+            MenuTracker.fillActions();
+            for (int i = 0; i < menu.getActionsLentgh(); i++) {
+                range.add(i);
+            }
+            do {
+                MenuTracker.show();
+                MenuTracker.select(this.input.ask("select:", range));
+            } while (!"y".equals(this.input.ask("Exit?(y): ")));
+        }*/
     }
 }
 
