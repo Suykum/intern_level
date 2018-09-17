@@ -76,13 +76,13 @@ public class StartUI {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         ArrayList<Integer> range = new ArrayList<>();
         menu.fillActions(this);
-
         for (int i = 0; i < menu.getActionsLentgh(); i++) {
             range.add(i);
         }
         do {
             menu.show();
             //int key = Integer.valueOf(this.input.ask("Select:"));
+            //menu.select(key);
             menu.select(input.ask("Select", menuRanges));
         } while (this.working);
     }
