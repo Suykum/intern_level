@@ -36,4 +36,15 @@ public class Logic3TTest {
         Logic3T login = new Logic3T(table);
         assertThat(login.hasGap(), is(true));
     }
+
+    @Test
+    public void whenHasXWinnerXRow() {
+        Figure3T[][] table = {
+                {new Figure3T(true), new Figure3T(true), new Figure3T(true)},
+                {new Figure3T(), new Figure3T(), new Figure3T()},
+                {new Figure3T(), new Figure3T(), new Figure3T()},
+        };
+        Logic3T login = new Logic3T(table);
+        assertThat(login.isWinnerX(), is(true));
+    }
 }

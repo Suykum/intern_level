@@ -17,7 +17,7 @@ public class Logic3T {
      * @return true if X is winner of the game
      */
     public boolean isWinnerX() {
-        return (checkRowsX() || checkColumnsX() || checkDiagonalsX());
+        return (checkRowsX() || checkColumnsX() || checkDiagonal1X() || checkDiagonal2X());
     }
 
     /**
@@ -28,12 +28,12 @@ public class Logic3T {
         boolean result = true;
         for (int i = 0; i < table.length; i++) {
             result = true;
-            for (int j = 0; j < table.length - 1; j++) {
-                if (!(table[i][j].hasMarkX() && table[i][j + 1].hasMarkX())) {
-                    result = false;
-                    break;
+                for (int j = 0; j < table.length - 1; j++) {
+                    if (!(table[i][j].hasMarkX() && table[i][j + 1].hasMarkX())) {
+                        result = false;
+                        break;
+                    }
                 }
-            }
             if (result) {
                 break;
             }
@@ -68,12 +68,23 @@ public class Logic3T {
      * @return
      */
 
-    public boolean checkDiagonalsX() {
+    public boolean checkDiagonal1X() {
         boolean result = true;
         for (int i = 0; i < table.length - 1; i++) {
             result = true;
-            if (!(table[i][i].hasMarkX() && table[i + 1][i + 1].hasMarkX()
-            || table[i][table.length - 1 - i].hasMarkX() && table[i + 1][table.length - 2 - i].hasMarkX())) {
+            if (!(table[i][i].hasMarkX() && table[i + 1][i + 1].hasMarkX())) {
+                   result = false;
+                   break;
+            }
+        }
+        return result;
+    }
+
+    public boolean checkDiagonal2X() {
+        boolean result = true;
+        for (int i = 0; i < table.length - 1; i++) {
+            result = true;
+            if(!(table[i][table.length - 1 - i].hasMarkX() && table[i + 1][table.length - 2 - i].hasMarkX())) {
                 result = false;
                 break;
             }
@@ -86,7 +97,7 @@ public class Logic3T {
      * @return
      */
     public boolean isWinnerO() {
-        return (checkRowsO() || checkColumnsO() || checkDiagonalsO());
+        return (checkRowsO() || checkColumnsO() || checkDiagonal1O() || checkDiagonal2O());
     }
 
     public boolean checkRowsO() {
@@ -123,13 +134,24 @@ public class Logic3T {
         return result;
     }
 
-    public boolean checkDiagonalsO() {
+    public boolean checkDiagonal1O() {
         boolean result = true;
         for (int i = 0; i < table.length - 1; i++) {
             result = true;
 
-            if (!(table[i][i].hasMarkO() && table[i + 1][i + 1].hasMarkO()
-                    || table[i][table.length - 1 - i].hasMarkO() && table[i + 1][table.length - 2 - i].hasMarkO())) {
+            if (!(table[i][i].hasMarkO() && table[i + 1][i + 1].hasMarkO())) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public boolean checkDiagonal2O() {
+        boolean result = true;
+        for (int i = 0; i < table.length - 1; i++) {
+            result = true;
+            if(!(table[i][table.length - 1 - i].hasMarkO() && table[i + 1][table.length - 2 - i].hasMarkO())) {
                 result = false;
                 break;
             }
@@ -138,15 +160,17 @@ public class Logic3T {
     }
     public boolean hasGap() {
        boolean gap = false;
+       outer:
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table.length; j++) {
                 if (!(table[i][j].hasMarkX() || table[i][j].hasMarkO())) {
                     gap = true;
                     break;
                 }
+            } if (gap) {
+                break ;
             }
         }
-
         return gap;
     }
 }
