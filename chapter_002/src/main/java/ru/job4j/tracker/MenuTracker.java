@@ -71,7 +71,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%d. %s",key, info);
+            return String.format("%d. %s", key, info);
         }
     }
     static class ShowItems implements UserAction {
@@ -101,7 +101,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%d. %s",key, info);
+            return String.format("%d. %s", key, info);
         }
     }
     static class EditItem implements UserAction {
@@ -134,7 +134,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%d. %s",key, info);
+            return String.format("%d. %s", key, info);
         }
     }
     static class DeleteItem implements UserAction {
@@ -162,7 +162,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%d. %s",key, info);
+            return String.format("%d. %s", key, info);
         }
     }
     static class FindItemById implements UserAction {
@@ -192,7 +192,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%d. %s",key, info);
+            return String.format("%d. %s", key, info);
         }
     }
     static class FindItemsByName implements UserAction {
@@ -223,7 +223,7 @@ public class MenuTracker {
         }
         @Override
         public String info() {
-            return String.format("%d. %s",key, info);
+            return String.format("%d. %s", key, info);
         }
     }
     static class ExitProgram implements UserAction {
@@ -248,7 +248,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%d. %s",key, info);
+            return String.format("%d. %s", key, info);
         }
     }
 }

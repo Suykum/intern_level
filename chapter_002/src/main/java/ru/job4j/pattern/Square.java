@@ -1,6 +1,6 @@
 package ru.job4j.pattern;
 
-public class Square implements Shape{
+public class Square implements Shape {
     public String draw() {
         StringBuilder pic = new StringBuilder();
         pic.append("****").append(ls);

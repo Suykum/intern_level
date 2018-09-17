@@ -25,7 +25,7 @@ public class PatternTest {
     @Test
     public void whenDrawTriangle() {
         Triangle triangle = new Triangle();
-        assertThat(triangle.draw(),is(new StringBuilder()
+        assertThat(triangle.draw(), is(new StringBuilder()
                                         .append("   *   ").append(ls)
                                         .append("  * *  ").append(ls)
                                         .append(" *   * ").append(ls)

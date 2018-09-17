@@ -98,7 +98,7 @@ public class StartUIOutputTest {
 
     @Test
     public void whenSearchingByName() throws MenuOutException {
-        Input input = new StubInput(new String[]{"5",items[2].getName(), "6"});
+        Input input = new StubInput(new String[]{"5", items[2].getName(), "6"});
         new StartUI(input, tracker).init();
         sb.append(ls).append("------------ Searching by name --------------").append(ls);
         sb.append("------------ Result of searching: --------------").append(ls);
