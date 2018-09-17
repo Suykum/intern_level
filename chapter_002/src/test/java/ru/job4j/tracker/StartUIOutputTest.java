@@ -47,7 +47,7 @@ public class StartUIOutputTest {
         System.out.println("After method.");
     }
     @Test
-    public void whenAddingNewItem() {
+    public void whenAddingNewItem() throws MenuOutException {
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUI(input, tracker).init();
         sb.append(ls).append("------------ Adding new Item --------------").append(ls);
@@ -56,7 +56,7 @@ public class StartUIOutputTest {
         assertThat(new String(this.out.toByteArray()), is(sb.toString()));
     }
     @Test
-    public void whenGettingAllItems() {
+    public void whenGettingAllItems() throws MenuOutException {
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
         sb.append(ls).append("------------ All Items --------------").append(ls);
@@ -67,7 +67,7 @@ public class StartUIOutputTest {
         assertThat(new String(this.out.toByteArray()), is(sb.toString()));
     }
     @Test
-    public void whenDeleteItem() {
+    public void whenDeleteItem() throws MenuOutException {
         Input input = new StubInput(new String[]{"3", "789", "6"});
         new StartUI(input, tracker).init();
         sb.append(ls).append("------------ Deleting item --------------").append(ls);
@@ -77,7 +77,7 @@ public class StartUIOutputTest {
     }
 
     @Test
-    public void whenEditing() {
+    public void whenEditing() throws MenuOutException {
         Input input = new StubInput(new String[]{"2", items[0].getId(), "test replace", "заменили заявку", "6"});
         new StartUI(input, tracker).init();
         sb.append(ls).append("------------ Edit Item--------------").append(ls);
@@ -86,7 +86,7 @@ public class StartUIOutputTest {
         assertThat(new String(this.out.toByteArray()), is(sb.toString()));
     }
     @Test
-    public void whenSearchingById() {
+    public void whenSearchingById() throws MenuOutException {
         Input input = new StubInput(new String[]{"4", items[1].getId(), "6"});
         new StartUI(input, tracker).init();
         sb.append(ls).append("------------ Searching by ID --------------").append(ls);
@@ -97,7 +97,7 @@ public class StartUIOutputTest {
     }
 
     @Test
-    public void whenSearchingByName() {
+    public void whenSearchingByName() throws MenuOutException {
         Input input = new StubInput(new String[]{"5",items[2].getName(), "6"});
         new StartUI(input, tracker).init();
         sb.append(ls).append("------------ Searching by name --------------").append(ls);

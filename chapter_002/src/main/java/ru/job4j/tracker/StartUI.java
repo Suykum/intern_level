@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * @version $Id$
@@ -71,17 +70,20 @@ public class StartUI {
         }
 
     }*/
-    public void init() {
+
+    private int[] menuRanges = {0, 1, 2, 3, 4, 5, 6};
+    public void init() throws MenuOutException {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         ArrayList<Integer> range = new ArrayList<>();
         menu.fillActions(this);
+
         for (int i = 0; i < menu.getActionsLentgh(); i++) {
             range.add(i);
         }
         do {
             menu.show();
-            int key = Integer.valueOf(this.input.ask("Select:"));
-            menu.select(key);
+            //int key = Integer.valueOf(this.input.ask("Select:"));
+            menu.select(input.ask("Select", menuRanges));
         } while (this.working);
     }
     public void stop() {
@@ -200,9 +202,9 @@ public class StartUI {
          * Запускт программы.
          * @param args
          */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MenuOutException {
 
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
 
     }
 }

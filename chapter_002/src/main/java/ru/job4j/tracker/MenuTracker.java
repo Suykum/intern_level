@@ -46,8 +46,6 @@ public class MenuTracker {
             }
         }
     }
-
-
     static class AddItem implements UserAction {
         int key;
         String info;
@@ -253,7 +251,4 @@ public class MenuTracker {
             return String.format("%d. %s",key, info);
         }
     }
-
-
-
 }

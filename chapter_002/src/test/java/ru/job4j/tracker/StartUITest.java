@@ -4,14 +4,14 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 public class StartUITest {
     @Test
-    public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
+    public void whenUserAddItemThenTrackerHasNewItemWithSameName() throws MenuOutException {
         Tracker tracker = new Tracker();     // создаём Tracker
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
         assertThat(tracker.getAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
     @Test
-    public void whenGettingAllItems() {
+    public void whenGettingAllItems() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item[] items = {(new Item("test1", "desc1")),
                         (new Item("test2", "desc2")),
@@ -25,7 +25,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenUpdateThenTrackerHasUpdatedValue() {
+    public void whenUpdateThenTrackerHasUpdatedValue() throws MenuOutException {
         // создаём Tracker
         Tracker tracker = new Tracker();
         //Напрямую добавляем заявку
@@ -39,7 +39,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenDeleteItem() {
+    public void whenDeleteItem() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item[] items = {(new Item("test1", "desc1")),
                         (new Item("test2", "desc2"))};
@@ -52,7 +52,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenSearchingById() {
+    public void whenSearchingById() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item item1 = tracker.add(new Item("test1", "desc1"));
         Item item2 = tracker.add(new Item("test2", "desc2"));
@@ -61,7 +61,7 @@ public class StartUITest {
         assertThat(tracker.findById(item2.getId()).getName(), is("test2"));
     }
     @Test
-    public void whenSearchingByName() {
+    public void whenSearchingByName() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item[] items = {(new Item("test2", "desc2")),
                         (new Item("test2", "desc3"))};
