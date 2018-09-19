@@ -21,14 +21,14 @@ public class StartUIOutputTest {
 
     public String getMenu() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Menu.").append(ls);
-        sb.append("0. Add new Item").append(ls);
-        sb.append("1. Show all items").append(ls);
-        sb.append("2. Edit item").append(ls);
-        sb.append("3. Delete item").append(ls);
-        sb.append("4. Find item by Id").append(ls);
-        sb.append("5. Find items by name").append(ls);
-        sb.append("6. Exit Program").append(ls);
+        //sb.append("Menu.").append(ls);
+        sb.append("0 : Add new Item").append(ls);
+        sb.append("1 : Show all items").append(ls);
+        sb.append("2 : Edit item").append(ls);
+        sb.append("3 : Delete item").append(ls);
+        sb.append("4 : Find item by Id").append(ls);
+        sb.append("5 : Find items by name").append(ls);
+        sb.append("6 : Exit Program");
         return sb.toString();
     }
     StringBuilder sb = new StringBuilder(getMenu());

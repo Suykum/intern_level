@@ -36,18 +36,4 @@ public class ValidateInputTest {
                 )
         );
     }
-
-    @Test
-    public void whenInvalidInput2() {
-        ValidateInput input = new ValidateInput(
-                new StubInput(new String[] {"9"})
-        );
-        input.ask("Enter", new int[] {0, 1, 2, 3, 4, 5, 6});
-        assertThat(
-                this.mem.toString(),
-                is(
-                        String.format("Please select number from a menu%n")
-                )
-        );
-    }
 }

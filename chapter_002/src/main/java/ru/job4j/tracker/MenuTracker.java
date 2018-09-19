@@ -131,7 +131,7 @@ public class MenuTracker {
             }
         }
     }
-    static class FindItemsByName extends BaseAction{
+    static class FindItemsByName extends BaseAction {
         public FindItemsByName(int key, String name) {
             super(key, name);
         }
