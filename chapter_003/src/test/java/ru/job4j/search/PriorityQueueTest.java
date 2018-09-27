@@ -24,6 +24,7 @@ public class PriorityQueueTest {
         queue.put(new Task("urgent", 1));
         queue.put(new Task("no matter", 8));
         queue.put(new Task("middle", 3));
+        queue.put(new Task("no matter", 8));
         Task result = queue.last();
         System.out.println(queue.toString());
         assertThat(result.getDesc(), is("no matter"));

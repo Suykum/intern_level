@@ -16,21 +16,20 @@ public class PriorityQueue {
      *
      * @param task задача
      */
+
     public void put(Task task) {
-        ListIterator<Task> tasksIter = tasks.listIterator();
-        if (tasks.size() == 0) {
-            tasks.add(task);
-        }
+        int index = tasks.size();
         for (Task t : tasks) {
-            if (task.getPriority() < t.getPriority()) {
-                tasks.add(tasks.indexOf(t), task);
+            if (tasks.size() == 0) {
+                tasks.add(task);
+            } else if (task.getPriority() < t.getPriority() || task.getPriority() == t.getPriority()) {
+                index = tasks.indexOf(t);
                 break;
             }
         }
-        if (!tasks.contains(task)) {
-            tasks.addLast(task);
-        }
+        tasks.add(index, task);
     }
+
     /**
      *
      * @return high priority task.
