@@ -11,7 +11,7 @@ public class ConvertList2Array {
     public int[][] toArray(List<Integer> list, int rows) {
         int listSize = list.size();
         ListIterator<Integer> listIter = list.listIterator();
-        int cells = listSize/rows;
+        int cells = listSize / rows;
         if (list.size() % rows != 0) {
             cells++;
         }

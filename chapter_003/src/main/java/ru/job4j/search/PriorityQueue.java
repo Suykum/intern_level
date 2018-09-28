@@ -32,7 +32,7 @@ public class PriorityQueue {
      *
      * @return high priority task.
      */
-    public Task take () {
+    public Task take() {
         return this.tasks.poll();
     }
 
@@ -40,7 +40,7 @@ public class PriorityQueue {
      *
      * @return the less priority task.
      */
-    public Task last () {
+    public Task last (){
         return this.tasks.getLast();
     }
 

@@ -7,7 +7,7 @@ import java.util.Map;
  * Converting List to HashMap.
  */
 public class UserConvert {
-    HashMap<Integer, User> users = new HashMap<>();
+    private HashMap<Integer, User> users = new HashMap<>();
     public HashMap<Integer, User> process(List<User> list) {
         for (User u : list) {
             users.put(u.getId(), u);
