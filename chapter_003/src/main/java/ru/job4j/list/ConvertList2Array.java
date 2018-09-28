@@ -9,9 +9,12 @@ public class ConvertList2Array {
      * @return 2D array
      */
     public int[][] toArray(List<Integer> list, int rows) {
-        ListIterator<Integer> listIter = list.listIterator();
         int listSize = list.size();
-        int cells = rows;
+        ListIterator<Integer> listIter = list.listIterator();
+        int cells = listSize/rows;
+        if (list.size() % rows != 0) {
+            cells++;
+        }
         int[][] array = new int[rows][cells];
         int count = 0;
         for (int arrayRow = 0; arrayRow < rows; arrayRow++) {
@@ -19,11 +22,10 @@ public class ConvertList2Array {
                 if (count < listSize) {
                     array[arrayRow][arrayCol] = listIter.next();
                     count++;
-                } else {
-                    array[arrayRow][arrayCol] = 0;
                 }
             }
         }
         return array;
     }
 }
+
