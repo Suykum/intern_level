@@ -46,12 +46,20 @@ public class Tracker {
      * @param item
      */
     public boolean replace(String id, Item item) {
-        ListIterator<Item> listIter = items.listIterator();
         boolean result = false;
+        /*ListIterator<Item> listIter = items.listIterator();
         while (listIter.hasNext()) {
             if (listIter.next().getId().equals(id)) {
                 item.setId(id);
                 items.set(listIter.previousIndex(), item);
+                result = true;
+                break;
+            }
+        }*/
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId().equals(id)) {
+                item.setId(id);
+                items.set(i, item);
                 result = true;
                 break;
             }
