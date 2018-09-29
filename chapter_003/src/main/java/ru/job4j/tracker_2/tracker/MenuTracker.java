@@ -19,7 +19,13 @@ public class MenuTracker {
         this.actions.add(new FindItemsByName(5, "Find items by name"));
         this.actions.add(new ExitProgram(ui, 6, "Exit Program"));
     }
-
+    public ArrayList<Integer> menuRangesL() {
+        ArrayList<Integer> menuList = new ArrayList<>();
+        for (UserAction u : actions) {
+            menuList.add(u.key());
+        }
+        return menuList;
+    }
     /**
      * Метод для получения массива меню.
      *
@@ -162,4 +168,6 @@ public class MenuTracker {
             this.input.stop();
         }
     }
+
+
 }

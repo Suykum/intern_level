@@ -71,7 +71,7 @@ public class StartUI {
 
     }*/
 
-    private int[] menuRanges = {0, 1, 2, 3, 4, 5, 6};
+    //private int[] menuRanges = {0, 1, 2, 3, 4, 5, 6};
     public void init() throws MenuOutException {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         ArrayList<Integer> range = new ArrayList<>();
@@ -83,7 +83,7 @@ public class StartUI {
             menu.show();
             //int key = Integer.valueOf(this.input.ask("Select:"));
             //menu.select(key);
-            menu.select(input.ask("Select", menuRanges));
+            menu.select(input.ask("Select", menu.menuRangesL()));
         } while (this.working);
     }
     public void stop() {

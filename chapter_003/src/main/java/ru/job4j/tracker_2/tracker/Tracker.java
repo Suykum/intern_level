@@ -2,7 +2,7 @@ package ru.job4j.tracker_2.tracker;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+import java.util.ListIterator;
 
 /**
  * @version $Id$
@@ -47,18 +47,14 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
-        int index;
         for (Item i : items) {
             if (i.getId().equals(id)) {
-                index = items.indexOf(i);
-                items.add(index, item);
-                items.remove(index + 1);
                 item.setId(id);
+                items.set(items.indexOf(i), item);
                 result = true;
                 break;
             }
         }
-
         return result;
     }
 
@@ -66,15 +62,24 @@ public class Tracker {
      * deleting element from items array.
      * @param id
      */
+    ;
     public boolean delete(String id) {
+        ListIterator<Item> listIter = items.listIterator();
         boolean result = false;
-        for (Item i : items) {
+        while (listIter.hasNext()) {
+            if (listIter.next().getId().equals(id)) {
+                listIter.remove();
+                result = true;
+                break;
+            }
+        }
+        /*for (Item i : items) {
             if (i.getId().equals(id)) {
                 items.remove(i);
                 result = true;
                 break;
             }
-        }
+        }*/
         return result;
     }
 
