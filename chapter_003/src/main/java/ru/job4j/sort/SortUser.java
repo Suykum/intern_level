@@ -1,15 +1,12 @@
 package ru.job4j.sort;
-import java.util.List;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
+import java.util.*;
+import java.util.Comparator;
 /**
  * Converting List to sorted TreeSet.
  */
 public class SortUser {
     private SortedSet<User> sortedUser = new TreeSet<>();
-    public Set<User> sort (List<User> list) {
+    public Set<User> sort(List<User> list) {
         sortedUser.addAll(list);
         return sortedUser;
     }
@@ -20,4 +17,13 @@ public class SortUser {
     public User getLast() {
         return sortedUser.last();
     }
+    public List<User> sortByNameLength (List<User> list) {
+        Collections.sort(list, new LengthComparator());
+        return list;
+    }
+    public List<User> sortByAllFields (List<User> list) {
+        Collections.sort(list, new UserComparator());
+        return list;
+    }
+
 }
