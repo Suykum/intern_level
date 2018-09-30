@@ -17,11 +17,11 @@ public class SortUser {
     public User getLast() {
         return sortedUser.last();
     }
-    public List<User> sortByNameLength (List<User> list) {
+    public List<User> sortByNameLength(List<User> list) {
         Collections.sort(list, new LengthComparator());
         return list;
     }
-    public List<User> sortByAllFields (List<User> list) {
+    public List<User> sortByAllFields(List<User> list) {
         Collections.sort(list, new UserComparator());
         return list;
     }

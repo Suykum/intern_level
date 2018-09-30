@@ -40,7 +40,7 @@ public class PriorityQueue {
      *
      * @return the less priority task.
      */
-    public Task last (){
+    public Task last() {
         return this.tasks.getLast();
     }
 

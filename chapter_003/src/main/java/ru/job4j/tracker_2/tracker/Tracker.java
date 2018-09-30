@@ -71,7 +71,7 @@ public class Tracker {
      * deleting element from items array.
      * @param id
      */
-    ;
+
     public boolean delete(String id) {
         ListIterator<Item> listIter = items.listIterator();
         boolean result = false;
