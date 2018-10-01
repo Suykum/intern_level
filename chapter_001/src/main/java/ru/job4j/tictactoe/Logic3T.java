@@ -84,7 +84,7 @@ public class Logic3T {
         boolean result = true;
         for (int i = 0; i < table.length - 1; i++) {
             result = true;
-            if(!(table[i][table.length - 1 - i].hasMarkX() && table[i + 1][table.length - 2 - i].hasMarkX())) {
+            if (!(table[i][table.length - 1 - i].hasMarkX() && table[i + 1][table.length - 2 - i].hasMarkX())) {
                 result = false;
                 break;
             }
@@ -151,7 +151,7 @@ public class Logic3T {
         boolean result = true;
         for (int i = 0; i < table.length - 1; i++) {
             result = true;
-            if(!(table[i][table.length - 1 - i].hasMarkO() && table[i + 1][table.length - 2 - i].hasMarkO())) {
+            if (!(table[i][table.length - 1 - i].hasMarkO() && table[i + 1][table.length - 2 - i].hasMarkO())) {
                 result = false;
                 break;
             }
@@ -168,7 +168,7 @@ public class Logic3T {
                     break;
                 }
             } if (gap) {
-                break ;
+                break;
             }
         }
         return gap;
