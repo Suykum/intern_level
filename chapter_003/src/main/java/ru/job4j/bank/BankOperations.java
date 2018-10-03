@@ -36,20 +36,27 @@ public class BankOperations {
     }
     public boolean transferMoney (String srcPassport, String srcRequisite, String destPassport, String destRequisite, double amount) {
         boolean resultOfTransfer = false;
-        User srcUser = findUserByPass(srcPassport);
-        User dstUser = findUserByPass(destPassport);
-        int srcAccountIndex = getAccountIndex(srcUser, srcRequisite);
-        int desAccountIndex = getAccountIndex(dstUser, destRequisite);
+        Account srcAccount = getAccount(srcPassport, srcRequisite);
+        Account desAccount = getAccount(destPassport, destRequisite);
+        if (srcAccount.getValue() >= amount) {
+            double beforeSend = srcAccount.getValue();
+            srcAccount.setValue(beforeSend - amount);
 
-        if (userAccount.get(srcUser).get(srcAccountIndex).getValue() >= amount) {
-            double beforeSend = userAccount.get(srcUser).get(srcAccountIndex).getValue();
-            userAccount.get(srcUser).get(srcAccountIndex).setValue(beforeSend - amount);
-
-            double beforeResive = userAccount.get(dstUser).get(desAccountIndex).getValue();
-            userAccount.get(dstUser).get(desAccountIndex).setValue(beforeResive + amount);
+            double beforeReceive = desAccount.getValue();
+            desAccount.setValue(beforeReceive + amount);
             resultOfTransfer = true;
         }
         return resultOfTransfer;
+    }
+    public Account getAccount(String pass, String requisite) {
+        Account currentAccount = null;
+        List<Account> userAccountList = getUserAccounts(pass);
+        for (Account account : userAccountList) {
+            if (account.getRequisites() == requisite) {
+                currentAccount = account;
+            }
+        }
+        return currentAccount;
     }
 
     public User findUserByPass(String passport) {
@@ -62,16 +69,6 @@ public class BankOperations {
             }
         }
         return user;
-    }
-
-    public int getAccountIndex(User user, String requisite) {
-        int index = 0;
-        for (int i = 0; i < userAccount.get(user).size(); i++) {
-            if (userAccount.get(user).get(i).getRequisites() == requisite) {
-                index = i;
-            }
-        }
-        return index;
     }
     public int size() {
         return userAccount.size();
