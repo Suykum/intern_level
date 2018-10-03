@@ -38,12 +38,13 @@ public class BankOperations {
         boolean resultOfTransfer = false;
         Account srcAccount = getAccount(srcPassport, srcRequisite);
         Account desAccount = getAccount(destPassport, destRequisite);
-        if (srcAccount.getValue() >= amount) {
+        if (srcAccount != null && desAccount != null && srcAccount.getValue() >= amount) {
             double beforeSend = srcAccount.getValue();
             srcAccount.setValue(beforeSend - amount);
 
             double beforeReceive = desAccount.getValue();
             desAccount.setValue(beforeReceive + amount);
+
             resultOfTransfer = true;
         }
         return resultOfTransfer;

@@ -1,10 +1,13 @@
 package ru.job4j.bank;
+import org.hamcrest.core.IsNull;
 import org.junit.Test;
 import org.junit.Before;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class BankOperationTest {
@@ -54,5 +57,18 @@ public class BankOperationTest {
         bankOperations.addAccountToUser("P22222", new Account(0.0, "R0000000"));
         bankOperations.transferMoney("P11111", "R7777777", "P22222", "R0000000", 100.0);
         assertThat(bankOperations.getUserAccounts("P11111").get(0).getValue(), is(900.0));
+    }
+
+    @Test
+    public void whenAccountNotExist() {
+        Account resultAccount = bankOperations.getAccount("P11111", "R7777770");
+        assertThat(resultAccount, is(nullValue()));
+
+    }
+
+    @Test
+    public void whenTransferByNotFoundAccount() {
+        boolean resultOfTransfer = bankOperations.transferMoney("P11111", "R7777770", "P22222", "R0000000", 100.0);
+        assertThat(resultOfTransfer, is(false));
     }
 }
