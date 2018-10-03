@@ -26,7 +26,7 @@ public class BankOperations {
         }
     }
 
-    public List<Account> getUserAccounts (String passport) {
+    public List<Account> getUserAccounts(String passport) {
         User user = findUserByPass(passport);
         List<Account> userAccountList = null;
         if (user != null) {
@@ -34,7 +34,7 @@ public class BankOperations {
         }
         return userAccountList;
     }
-    public boolean transferMoney (String srcPassport, String srcRequisite, String destPassport, String destRequisite, double amount) {
+    public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String destRequisite, double amount) {
         boolean resultOfTransfer = false;
         Account srcAccount = getAccount(srcPassport, srcRequisite);
         Account desAccount = getAccount(destPassport, destRequisite);
