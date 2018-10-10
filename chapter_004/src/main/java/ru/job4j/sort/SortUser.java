@@ -29,8 +29,8 @@ public class SortUser {
     public List<User> sortByAllFields(List<User> list) {
         Stream<User> stream = list.stream();
         BiFunction<User, User, Integer> biFunc = (user1, user2)
-                -> {int diff = user1.getName().compareTo(user2.getName());
-            return diff != 0 ? diff : Integer.compare(user1.getAge(), user2.getAge());};
+                -> { int diff = user1.getName().compareTo(user2.getName());
+            return diff != 0 ? diff : Integer.compare(user1.getAge(), user2.getAge()); };
         return stream.sorted(biFunc::apply).collect(Collectors.toList());
     }
 
