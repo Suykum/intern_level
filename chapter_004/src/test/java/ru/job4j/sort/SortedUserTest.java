@@ -2,9 +2,13 @@ package ru.job4j.sort;
 
 import org.junit.Before;
 import org.junit.Test;
+import java.util.function.BiFunction;
+
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -53,5 +57,4 @@ public class SortedUserTest {
             System.out.println(u.getName() + " " + u.getAge());
         }
     }
-
 }
