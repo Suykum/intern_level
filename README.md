@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Suykum/job4j.svg?branch=master)](https://travis-ci.org/Suykum/job4j)
+[![Build Status](https://travis-ci.org/Suykum/intern_level.svg?branch=master)](https://travis-ci.org/Suykum/intern_level)
 [![codecov](https://codecov.io/gh/Suykum/job4j/branch/master/graph/badge.svg)](https://codecov.io/gh/Suykum/job4j)
 
 #Repository of Suykum
