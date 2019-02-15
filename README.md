@@ -9,6 +9,7 @@ to developer. First one I am going to achive by 09.2019, the second by 09.2020.
 
 Content:
 chapter_001 - Basic Syntax:
+
               * JVM
               * Data types
               * Conditional Statements
@@ -16,6 +17,7 @@ chapter_001 - Basic Syntax:
               * Arrays
               
 chapter_002 - Object-Oriented Programming:
+
               * Inheritance
               * Encapsulation
               * Polymorphism
@@ -24,6 +26,7 @@ chapter_002 - Object-Oriented Programming:
               * Exceptions
 
 chapter_003 - Collections Lite:
+
               * Collections Framework
               * ArrayList
               * Sorting
